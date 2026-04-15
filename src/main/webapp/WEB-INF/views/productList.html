@@ -119,6 +119,8 @@
             </tr>
         </tbody>
     </table>
-
+    <footer>
+        <p th:text="${'실습 수행 일시: ' + #temporals.format(#temporals.createNow(), 'yyyy년 MM월 dd일 (E) a HH:mm:ss') + ' | 학번: 2171435 | 성명: 최성욱'}"></p>
+    </footer>
 </body>
 </html>
