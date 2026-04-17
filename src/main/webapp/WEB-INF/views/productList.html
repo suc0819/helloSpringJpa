@@ -57,8 +57,6 @@
             <option th:each="cat : ${categories}"
                     th:value="${cat.id}"
                     th:text="${cat.name}"
-                    th:text="${cat.category}"
-
                     th:selected="${cat.id == categoryId}">
             </option>
         </select>
