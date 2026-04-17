@@ -16,10 +16,6 @@ public class CategoryForm {
     @Size(max = 50, message = "50자 이내로 입력하세요")
     private String name;
 
-    public Category toEntity() {
-        return new Category(this.name);
-    }
-
     public static CategoryForm from(Category category) {
         CategoryForm form = new CategoryForm();
         form.id = category.getId();
