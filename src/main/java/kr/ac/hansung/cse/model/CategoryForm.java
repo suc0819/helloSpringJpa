@@ -10,10 +10,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class CategoryForm {
+    private long id;
+
     @NotBlank(message = "카테고리 이름을 입력하세요")
     @Size(max = 50, message = "50자 이내로 입력하세요")
-
-    private long id;
     private String name;
 
     public Category toEntity() {

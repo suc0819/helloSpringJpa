@@ -36,20 +36,36 @@
 </head>
 <body>
 <h1>카테고리 목록</h1>
-<p th:if="${successMessage}" th:text="${successMessage}"></p>
-<p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
+<div class="alert-success" th:if="${successMessage}">
+    <p th:if="${successMessage}" th:text="${successMessage}"></p>
+    <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+</div>
+
+<a class="btn" th:href="@{/categories/create}">+ 새 카테고리 등록</a>
 
 <!-- th:each로 목록 반복, 삭제는 POST 폼으로 처리 -->
-<tr th:each="cat : ${categories}">
-    <td th:text="${cat.id}"></td>
-    <td th:text="${cat.name}"></td>
-    <td>
-        <!-- th:action에서 경로 변수 (id=${cat.id}) 바인딩 방법 -->
-        <form th:action="@{/categories/{id}/delete(id=${cat.id})}" method="post">
-            <button type="submit" class="btn">삭제</button>
-        </form>
-    </td>
-</tr>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>카테고리</th>
+        <th>작업</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cat : ${categories}">
+        <td th:text="${cat.id}"></td>
+        <td th:text="${cat.name}"></td>
+        <td>
+            <!-- th:action에서 경로 변수 (id=${cat.id}) 바인딩 방법 -->
+            <form th:action="@{/categories/{id}/delete(id=${cat.id})}" method="post">
+                <button type="submit" class="btn">삭제</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
 <footer>
     <p th:text="${'실습 수행 일시: ' + #temporals.format(#temporals.createNow(), 'yyyy년 MM월 dd일 (E) a HH:mm:ss') + ' | 학번: 2171435 | 성명: 최성욱'}"></p>
 </footer>

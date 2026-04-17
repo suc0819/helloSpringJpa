@@ -2,7 +2,9 @@ package kr.ac.hansung.cse.controller;
 
 import jakarta.validation.Valid;
 import kr.ac.hansung.cse.exception.DuplicateCategoryException;
+import kr.ac.hansung.cse.model.Category;
 import kr.ac.hansung.cse.model.CategoryForm;
+import kr.ac.hansung.cse.model.Product;
 import kr.ac.hansung.cse.service.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +40,8 @@ public class CategoryController {
         RedirectAttributes redirectAttributes
     ){
         if(bindingResult.hasErrors()) return "categoryForm"; // 검증 실패
+
+
         try{
             categoryService.createCategory(categoryForm.getName());
             redirectAttributes.addFlashAttribute("successMessage", "등록 완료");
